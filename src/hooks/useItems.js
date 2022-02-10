@@ -16,20 +16,14 @@ export const useItems = () => {
   ];
 
   const [itemList, setItemListState] = useState(todoList);
-  const [newItemText, setNewItemTextState] = useState("");
 
-  const addItem = () => {
+  const addItem = (newText) => {
     const newItem = {
       id: uuidv4(),
-      text: newItemText,
+      text: newText,
       done: false,
     };
     setItemListState([...itemList, newItem]);
-    setNewItemTextState("");
-  };
-
-  const setTextHandler = (newText) => {
-    setNewItemTextState(newText);
   };
 
   const checkItem = ({ id, done }) => {
@@ -45,9 +39,7 @@ export const useItems = () => {
 
   return {
     itemList,
-    newItemText,
     addItem,
-    setTextHandler,
     checkItem,
     deleteItem,
   };
